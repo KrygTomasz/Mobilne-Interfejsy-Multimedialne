@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="textViewTitle">Podaj współczynniki poniżej...</string>
+    <string name="app_name">Zadanie1</string>
+    <string name="textViewA">Podaj współczynnik a:</string>
+    <string name="textViewB">Podaj współczynnik b:</string>
+    <string name="textViewC">Podaj współczynnik c:</string>
+    <string name="hintA">a...</string>
+    <string name="hintB">b...</string>
+    <string name="hintC">c...</string>
+    <string name="buttonCalculate">Oblicz...</string>
+    <string name="textViewX0Desc">x0= </string>
+    <string name="textViewX1Desc">x1= </string>
+    <string name="textViewX2Desc">x2= </string>
+    <string name="noSolutions">Nie znaleziono rozwiązań rzeczywistych.</string>
+</resources>

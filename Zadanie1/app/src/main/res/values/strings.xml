@@ -1,0 +1,15 @@
+<resources>
+    <string name="textViewTitle">Type function coefficients below...</string>
+    <string name="app_name">Zadanie1</string>
+    <string name="textViewA">Pass a coefficient:</string>
+    <string name="textViewB">Pass b coefficient:</string>
+    <string name="textViewC">Pass c coefficient:</string>
+    <string name="hintA">a...</string>
+    <string name="hintB">b...</string>
+    <string name="hintC">c...</string>
+    <string name="buttonCalculate">Calculate...</string>
+    <string name="textViewX0Desc">x0= </string>
+    <string name="textViewX1Desc">x1= </string>
+    <string name="textViewX2Desc">x2= </string>
+    <string name="noSolutions">No real solutions were found.</string>
+</resources>
