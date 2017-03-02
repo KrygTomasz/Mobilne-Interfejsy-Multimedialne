@@ -64,10 +64,11 @@ public class MainActivity extends AppCompatActivity {
                 Pair solutions = Pair.create(x1,x2);
                 return solutions;
             } else {
+                Toast.makeText(this, R.string.noSolutions, Toast.LENGTH_SHORT).show();
                 return null;
             }
         } catch (Exception e) {
-            Toast.makeText(this, "Wrong number", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.wrongNumber, Toast.LENGTH_SHORT).show();
             return null;
         }
     }
@@ -111,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
     private void initNoSolutionTexts() { // funkcja inicjalizująca pola tekstowe dla rozwiązań nierzeczywistych
         textViewX1Desc.setText("");
         textViewX2Desc.setText("");
-        textViewX1.setText(R.string.noSolutions);
+        textViewX1.setText("");
         textViewX2.setText("");
     }
 

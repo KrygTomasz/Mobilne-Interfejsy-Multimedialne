@@ -13,4 +13,5 @@
     <string name="textViewX1Desc">x1= </string>
     <string name="textViewX2Desc">x2= </string>
     <string name="noSolutions">Nie znaleziono rozwiązań rzeczywistych.</string>
+    <string name="wrongNumber">Wprowadzone liczby są błędne.</string>
 </resources>
