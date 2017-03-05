@@ -57,17 +57,18 @@ public class MainActivity extends AppCompatActivity {
             double b = Double.parseDouble(editTextB.getText().toString());
             double c = Double.parseDouble(editTextC.getText().toString());
 
-            double delta = b*b - 4*a*c;
-            if(delta>=0) {
+            double delta = b * b - 4 * a * c;
+            if (a == 0) throw new NumberFormatException();
+            if (delta >= 0) {
                 x1 = -b - Math.sqrt(delta) / (2 * a);
                 x2 = -b + Math.sqrt(delta) / (2 * a);
-                Pair solutions = Pair.create(x1,x2);
+                Pair solutions = Pair.create(x1, x2);
                 return solutions;
             } else {
                 Toast.makeText(this, R.string.noSolutions, Toast.LENGTH_SHORT).show();
                 return null;
             }
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
             Toast.makeText(this, R.string.wrongNumber, Toast.LENGTH_SHORT).show();
             return null;
         }
@@ -77,36 +78,40 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             Pair solutions = calculate(); // wyliczenie rozwiązań
-            try {
-                int numberOfSolutions = numberOfSolutions(solutions);
-                if(numberOfSolutions == 1){
-                    initOneSolutionTexts(solutions);
-                } else if(numberOfSolutions == 2) {
-                    initTwoSolutionTexts(solutions);
-                }
-            } catch (Exception e) {
-                initNoSolutionTexts();
-            }
+            initTextViews(solutions);
         }
     };
 
     private int numberOfSolutions(Pair solution) { // funkcja licząca ilość rozwiązań
-        if(solution.first.equals(solution.second)) return 1;
+        if (solution.first.equals(solution.second)) return 1;
         else return 2;
+    }
+
+    private void initTextViews(Pair solutions) { // funkcja inicjalizująca wszystkie pola teksowe zależnie od rozwiązań
+        try {
+            int numberOfSolutions = numberOfSolutions(solutions);
+            if (numberOfSolutions == 1) {
+                initOneSolutionTexts(solutions);
+            } else if (numberOfSolutions == 2) {
+                initTwoSolutionTexts(solutions);
+            }
+        } catch (Exception e) {
+            initNoSolutionTexts();
+        }
     }
 
     private void initOneSolutionTexts(Pair solutions) { // funkcja inicjalizująca pola tekstowe dla jednego podwójnego rozwiązania
         textViewX1Desc.setText(R.string.textViewX0Desc);
         textViewX2Desc.setText("");
-        textViewX1.setText(solutions.first.toString());
+        textViewX1.setText(numberToString((double)solutions.first));
         textViewX2.setText("");
     }
 
     private void initTwoSolutionTexts(Pair solutions) { // funkcja inicjalizująca pola tekstowe dla dwóch różnych rozwiązań
         textViewX1Desc.setText(R.string.textViewX1Desc);
         textViewX2Desc.setText(R.string.textViewX2Desc);
-        textViewX1.setText(solutions.first.toString());
-        textViewX2.setText(solutions.second.toString());
+        textViewX1.setText(numberToString((double)solutions.first));
+        textViewX2.setText(numberToString((double)solutions.second));
     }
 
     private void initNoSolutionTexts() { // funkcja inicjalizująca pola tekstowe dla rozwiązań nierzeczywistych
@@ -114,6 +119,15 @@ public class MainActivity extends AppCompatActivity {
         textViewX2Desc.setText("");
         textViewX1.setText("");
         textViewX2.setText("");
+    }
+
+    private String numberToString(double number) { // funkcja zamieniająca liczbę na stringa, sprawdzając czy jest całkowita czy nie
+        long wholeNumber = (long) number;
+        if (number == wholeNumber) {
+            return String.valueOf(wholeNumber);
+        } else {
+            return String.valueOf(number);
+        }
     }
 
 }
