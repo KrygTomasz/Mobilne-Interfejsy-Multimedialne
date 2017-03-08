@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="pressedText">#FFFFFF</color>
+    <color name="normalText">#000000</color>
+    <color name="pressedButton">#FF7636</color>
+    <color name="normalButton">#FF9A6B</color>
+    <integer-array name="appColors">
+        <item>@color/pressedText</item>
+        <item>@color/normalText</item>
+        <item>@color/pressedButton</item>
+        <item>@color/normalButton</item>
+    </integer-array>
+</resources>
