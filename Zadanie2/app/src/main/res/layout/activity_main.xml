@@ -12,7 +12,6 @@
     tools:context="com.example.kryguu.zadanie2.MainActivity">
 
 
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,6 +33,24 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
                 <TextView
+                    android:id="@+id/textViewA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/A"/>
+                <EditText
+                    android:id="@+id/editTextA"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLength="3"
+                    android:hint="@string/intervalARGB"
+                    android:inputType="number"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
                     android:id="@+id/textViewR"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -43,7 +60,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:maxLength="3"
-                    android:hint="@string/intervalRGB"
+                    android:hint="@string/intervalARGB"
                     android:inputType="number"/>
             </LinearLayout>
 
@@ -61,7 +78,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:maxLength="3"
-                    android:hint="@string/intervalRGB"
+                    android:hint="@string/intervalARGB"
                     android:inputType="number"/>
             </LinearLayout>
 
@@ -79,16 +96,42 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:maxLength="3"
-                    android:hint="@string/intervalRGB"
+                    android:hint="@string/intervalARGB"
                     android:inputType="number"/>
             </LinearLayout>
 
-            <Button
-                android:id="@+id/calculateHSVButton"
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@string/calculateHSV" />
-
+                android:orientation="horizontal">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/H" />
+                <TextView
+                    android:id="@+id/calculatedH"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/S" />
+                <TextView
+                    android:id="@+id/calculatedS"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/V" />
+                <TextView
+                    android:id="@+id/calculatedV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"/>
+            </LinearLayout>
 
         </LinearLayout>
 
@@ -157,12 +200,74 @@
                     android:inputType="number|numberDecimal"/>
             </LinearLayout>
 
-            <Button
-                android:id="@+id/calculateRGBButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/calculateRGB" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_gravity="center_horizontal"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/RGBHex"
+                        android:gravity="left|center_vertical"/>
+
+                    <TextView
+                        android:id="@+id/calculatedRGBHex"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="@string/empty"
+                        android:gravity="left|center_vertical"/>
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/A" />
+                    <TextView
+                        android:id="@+id/calculatedA"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/R" />
+                    <TextView
+                        android:id="@+id/calculatedR"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/G" />
+                    <TextView
+                        android:id="@+id/calculatedG"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/B" />
+                    <TextView
+                        android:id="@+id/calculatedB"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"/>
+                </LinearLayout>
+            </LinearLayout>
 
         </LinearLayout>
 

@@ -1,16 +1,19 @@
 <resources>
     <string name="app_name">Zadanie2</string>
+    <string name="empty"></string>
     <string name="RGBtoHSV">RGB -> HSV</string>
     <string name="HSVtoRGB">HSV -> RGB</string>
-    <string name="R">R:</string>
-    <string name="G">G:</string>
-    <string name="B">B:</string>
-    <string name="H">H:</string>
-    <string name="S">S:</string>
-    <string name="V">V:</string>
+    <string name="A">A: </string>
+    <string name="R">R: </string>
+    <string name="G">G: </string>
+    <string name="B">B: </string>
+    <string name="H">H: </string>
+    <string name="S">S: </string>
+    <string name="V">V: </string>
     <string name="calculateHSV">Calculate HSV</string>
     <string name="calculateRGB">Calculate RGB</string>
-    <string name="intervalRGB">[0...255]</string>
+    <string name="intervalARGB">[0...255]</string>
     <string name="intervalH">[0...359]</string>
     <string name="intervalSV">[0...1]</string>
+    <string name="RGBHex">RGB hex:\t</string>
 </resources>
