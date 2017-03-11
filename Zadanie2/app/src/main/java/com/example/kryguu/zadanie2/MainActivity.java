@@ -44,22 +44,22 @@ public class MainActivity extends AppCompatActivity {
 
     private void initUIComponents() {
 
-        editTextA = (EditText)findViewById(R.id.editTextA);
-        editTextR = (EditText)findViewById(R.id.editTextR);
-        editTextG = (EditText)findViewById(R.id.editTextG);
-        editTextB = (EditText)findViewById(R.id.editTextB);
-        editTextH = (EditText)findViewById(R.id.editTextH);
-        editTextS = (EditText)findViewById(R.id.editTextS);
-        editTextV = (EditText)findViewById(R.id.editTextV);
+        editTextA = (EditText) findViewById(R.id.editTextA);
+        editTextR = (EditText) findViewById(R.id.editTextR);
+        editTextG = (EditText) findViewById(R.id.editTextG);
+        editTextB = (EditText) findViewById(R.id.editTextB);
+        editTextH = (EditText) findViewById(R.id.editTextH);
+        editTextS = (EditText) findViewById(R.id.editTextS);
+        editTextV = (EditText) findViewById(R.id.editTextV);
 
-        calculatedHTextView = (TextView)findViewById(R.id.calculatedH);
-        calculatedSTextView = (TextView)findViewById(R.id.calculatedS);
-        calculatedVTextView = (TextView)findViewById(R.id.calculatedV);
-        calculatedATextView = (TextView)findViewById(R.id.calculatedA);
-        calculatedRTextView = (TextView)findViewById(R.id.calculatedR);
-        calculatedGTextView = (TextView)findViewById(R.id.calculatedG);
-        calculatedBTextView = (TextView)findViewById(R.id.calculatedB);
-        calculatedRGBHexTextView = (TextView)findViewById(R.id.calculatedRGBHex);
+        calculatedHTextView = (TextView) findViewById(R.id.calculatedH);
+        calculatedSTextView = (TextView) findViewById(R.id.calculatedS);
+        calculatedVTextView = (TextView) findViewById(R.id.calculatedV);
+        calculatedATextView = (TextView) findViewById(R.id.calculatedA);
+        calculatedRTextView = (TextView) findViewById(R.id.calculatedR);
+        calculatedGTextView = (TextView) findViewById(R.id.calculatedG);
+        calculatedBTextView = (TextView) findViewById(R.id.calculatedB);
+        calculatedRGBHexTextView = (TextView) findViewById(R.id.calculatedRGBHex);
 
         rgbHsvView = findViewById(R.id.rgbHsvView);
         hsvRgbView = findViewById(R.id.hsvRgbView);
@@ -83,39 +83,46 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private TextWatcher getTextWatcherForEditText(final int maxValue, final EditText editText) {
-            TextWatcher textWatcher = new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                }
+        TextWatcher textWatcher = new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            }
 
-                @Override
-                public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                    double value;
-                    try {
-                        value = Double.parseDouble(charSequence.toString());
-                    } catch (NumberFormatException e) {
-                        value = 0;
-                    }
-                    if (value > maxValue) {
-                        String max = String.valueOf(maxValue);
-                        editText.setText(max);
-                    }
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                double value;
+                try {
+                    value = Double.parseDouble(charSequence.toString());
+                } catch (NumberFormatException e) {
+                    value = 0;
                 }
+                if (value > maxValue) {
+                    String max = String.valueOf(maxValue);
+                    editText.setText(max);
+                }
+            }
 
-                @Override
-                public void afterTextChanged(Editable editable) {
-                    tryCalculateRGB();
-                    tryCalculateHSV();
-                }
-            };
-            return textWatcher;
+            @Override
+            public void afterTextChanged(Editable editable) {
+
+                String h = editTextH.getText().toString();
+                String s = editTextS.getText().toString();
+                String v = editTextV.getText().toString();
+
+                String a = editTextA.getText().toString();
+                String r = editTextR.getText().toString();
+                String g = editTextG.getText().toString();
+                String b = editTextB.getText().toString();
+
+                tryCalculateARGB(h, s, v);
+                tryCalculateHSV(a, r, g, b);
+            }
+        };
+        return textWatcher;
     }
 
-    private void tryCalculateRGB() {
+    private void tryCalculateARGB(String h, String s, String v) {
 
-        String h = editTextH.getText().toString();
-        String s = editTextS.getText().toString();
-        String v = editTextV.getText().toString();
         float hValue, sValue, vValue = 0;
         float[] hsv = new float[3];
 
@@ -127,57 +134,45 @@ public class MainActivity extends AppCompatActivity {
             hsv[1] = sValue;
             hsv[2] = vValue;
             int color = Color.HSVToColor(hsv);
-            calculatedRGBHexTextView.setText("#"+Integer.toHexString(color));
-            calculatedATextView.setText(numberToString(Color.alpha(color)));
-            calculatedRTextView.setText(numberToString(Color.red(color)));
-            calculatedGTextView.setText(numberToString(Color.green(color)));
-            calculatedBTextView.setText(numberToString(Color.blue(color)));
-            hsvRgbView.setBackgroundColor(color);
+            setARGBViews(color);
         } catch (NumberFormatException e) {
-            Toast.makeText(MainActivity.this, "", Toast.LENGTH_SHORT);
+            Toast.makeText(MainActivity.this, getString(R.string.errorText), Toast.LENGTH_SHORT);
         }
 
     }
 
-    private void tryCalculateHSV() {
+    private void setARGBViews(int color) {
+        calculatedRGBHexTextView.setText(getString(R.string.sharpChar) + Integer.toHexString(color));
+        calculatedATextView.setText(StringTools.numberToString(Color.alpha(color)));
+        calculatedRTextView.setText(StringTools.numberToString(Color.red(color)));
+        calculatedGTextView.setText(StringTools.numberToString(Color.green(color)));
+        calculatedBTextView.setText(StringTools.numberToString(Color.blue(color)));
+        hsvRgbView.setBackgroundColor(color);
+    }
 
-        String a = editTextA.getText().toString();
-        String r = editTextR.getText().toString();
-        String g = editTextG.getText().toString();
-        String b = editTextB.getText().toString();
-        int aValue, rValue, gValue, bValue = 0;
-        float[] hsv = new float[3];
+    private void tryCalculateHSV(String a, String r, String g, String b) {
+
+        int aValue, rValue, gValue, bValue;
         try {
             aValue = Integer.parseInt(a);
             rValue = Integer.parseInt(r);
             gValue = Integer.parseInt(g);
             bValue = Integer.parseInt(b);
-            int color = Color.argb(aValue,rValue,gValue,bValue);
-            rgbHsvView.setBackgroundColor(color);
-            Color.RGBToHSV(rValue, gValue, bValue, hsv);
-            calculatedHTextView.setText(numberToString((long)hsv[0]));
-            calculatedSTextView.setText(numberToString(hsv[1]));
-            calculatedVTextView.setText(numberToString(hsv[2]));
+            setHSVViews(aValue, rValue, gValue, bValue);
         } catch (NumberFormatException e) {
-            Toast.makeText(MainActivity.this, "", Toast.LENGTH_SHORT);
+            Toast.makeText(MainActivity.this, getString(R.string.errorText), Toast.LENGTH_SHORT);
         }
 
     }
 
-    private String numberToString(double number) { // funkcja zamieniająca liczbę na stringa, sprawdzając czy jest całkowita czy nie
-        long wholeNumber = (long) number;
-        if (number == wholeNumber) {
-            return String.valueOf(wholeNumber);
-        } else {
-            return String.format("%.3f",number); //String.valueOf(number);
-        }
-    }
-
-    private void rgbToHsv(int r, int g, int b) {
+    private void setHSVViews(int a, int r, int g, int b) {
         float[] hsv = new float[3];
-        Color.RGBToHSV(r,g,b,hsv);
-        Log.d("HSV0", String.valueOf(hsv[0]));
-        Log.d("HSV1", String.valueOf(hsv[1]));
-        Log.d("HSV2", String.valueOf(hsv[2]));
+        int color = Color.argb(a, r, g, b);
+        Color.RGBToHSV(r, g, b, hsv);
+        calculatedHTextView.setText(StringTools.numberToString((long) hsv[0]));
+        calculatedSTextView.setText(StringTools.numberToString(hsv[1]));
+        calculatedVTextView.setText(StringTools.numberToString(hsv[2]));
+        rgbHsvView.setBackgroundColor(color);
     }
+
 }
