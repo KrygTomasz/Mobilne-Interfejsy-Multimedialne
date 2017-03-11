@@ -6,12 +6,12 @@ package com.example.kryguu.zadanie2;
 
 public class StringTools {
 
-    static String numberToString(double number) { // funkcja zamieniająca liczbę na stringa, sprawdzając czy jest całkowita czy nie
+    static String numberToString(double number) { // changes number to String checking if number is whole or not
         long wholeNumber = (long) number;
         if (number == wholeNumber) {
             return String.valueOf(wholeNumber);
         } else {
-            return String.format("%.3f", number); //String.valueOf(number);
+            return String.format("%.3f", number);
         }
     }
 

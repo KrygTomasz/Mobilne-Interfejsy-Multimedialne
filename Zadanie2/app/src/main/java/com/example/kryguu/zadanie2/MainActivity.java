@@ -5,9 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -42,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         addListeners();
     }
 
-    private void initUIComponents() {
+    private void initUIComponents() { // initializes user interface components
 
         editTextA = (EditText) findViewById(R.id.editTextA);
         editTextR = (EditText) findViewById(R.id.editTextR);
@@ -68,9 +66,9 @@ public class MainActivity extends AppCompatActivity {
 
     private void addListeners() {
         addEditTextListeners();
-    }
+    } // adds all listeners
 
-    private void addEditTextListeners() {
+    private void addEditTextListeners() { // adds listeners for each EditText field
 
         editTextA.addTextChangedListener(getTextWatcherForEditText(255, editTextA));
         editTextR.addTextChangedListener(getTextWatcherForEditText(255, editTextR));
@@ -82,14 +80,14 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private TextWatcher getTextWatcherForEditText(final int maxValue, final EditText editText) {
+    private TextWatcher getTextWatcherForEditText(final int maxValue, final EditText editText) { // returns TextWatcher for given EditText field with given maximum value
         TextWatcher textWatcher = new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
             }
 
             @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) { // checks if typed value is between 0 and maxValue
                 double value;
                 try {
                     value = Double.parseDouble(charSequence.toString());
@@ -103,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             @Override
-            public void afterTextChanged(Editable editable) {
+            public void afterTextChanged(Editable editable) { // calculates colors with values from EditTexts
 
                 String h = editTextH.getText().toString();
                 String s = editTextS.getText().toString();
@@ -121,7 +119,7 @@ public class MainActivity extends AppCompatActivity {
         return textWatcher;
     }
 
-    private void tryCalculateARGB(String h, String s, String v) {
+    private void tryCalculateARGB(String h, String s, String v) { // tries to calculate ARGB using given HSV
 
         float hValue, sValue, vValue = 0;
         float[] hsv = new float[3];
@@ -141,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void setARGBViews(int color) {
+    private void setARGBViews(int color) { // sets each View connected with ARGB results
         calculatedRGBHexTextView.setText(getString(R.string.sharpChar) + Integer.toHexString(color));
         calculatedATextView.setText(StringTools.numberToString(Color.alpha(color)));
         calculatedRTextView.setText(StringTools.numberToString(Color.red(color)));
@@ -150,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
         hsvRgbView.setBackgroundColor(color);
     }
 
-    private void tryCalculateHSV(String a, String r, String g, String b) {
+    private void tryCalculateHSV(String a, String r, String g, String b) { // tries to calculate HSV using given ARGB
 
         int aValue, rValue, gValue, bValue;
         try {
@@ -165,7 +163,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void setHSVViews(int a, int r, int g, int b) {
+    private void setHSVViews(int a, int r, int g, int b) { // sets each View connected with HSV results
         float[] hsv = new float[3];
         int color = Color.argb(a, r, g, b);
         Color.RGBToHSV(r, g, b, hsv);
