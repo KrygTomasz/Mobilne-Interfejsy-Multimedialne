@@ -28,13 +28,18 @@ public class MainActivity extends AppCompatActivity {
 //        requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
 //        getWindow().setFeatureInt(Window.FEATURE_CUSTOM_TITLE, R.layout.custom_title);
         setContentView(R.layout.activity_main);
+
+        fullScreen();
+
+        initUIComponents();
+    }
+
+    private void fullScreen() {
         Window window = getWindow();
         WindowManager.LayoutParams windowParams = window.getAttributes();
         final int bits = WindowManager.LayoutParams.FLAG_FULLSCREEN;
         windowParams.flags |= bits;
         window.setAttributes(windowParams);
-
-        initUIComponents();
     }
 
     private void initUIComponents() {

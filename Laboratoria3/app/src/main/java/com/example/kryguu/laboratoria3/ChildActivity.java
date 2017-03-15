@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -21,7 +23,18 @@ public class ChildActivity extends AppCompatActivity {
         setContentView(R.layout.activity_child);
         Intent intent = getIntent();
         extraValue = intent.getStringExtra(MainActivity.EXTRA_KEY);
+
+        fullScreen();
+
         initUIComponents();
+    }
+
+    private void fullScreen() {
+        Window window = getWindow();
+        WindowManager.LayoutParams windowParams = window.getAttributes();
+        final int bits = WindowManager.LayoutParams.FLAG_FULLSCREEN;
+        windowParams.flags |= bits;
+        window.setAttributes(windowParams);
     }
 
     private void initUIComponents() {

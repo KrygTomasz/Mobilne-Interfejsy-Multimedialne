@@ -11,39 +11,50 @@
     tools:context="com.example.kryguu.laboratoria3.MainActivity"
     android:orientation="vertical">
 
-    <Button
-        android:id="@+id/firstButton"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/firstButton"
-        />
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/secondButton"
+        <Button
+            android:id="@+id/firstButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/firstButton"
+            />
+
+        <Button
+            android:id="@+id/secondButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/secondButton"
+            />
+
+        <Button
+            android:id="@+id/thirdButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/thirdButton"
+            />
+
+        <Button
+            android:id="@+id/fourthButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/fourthButton"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/secondButton"
-        />
-
-    <Button
-        android:id="@+id/thirdButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/thirdButton"
-        />
-
-    <Button
-        android:id="@+id/fourthButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/fourthButton"
-        />
-
+        android:layout_height="match_parent"
+        android:gravity="bottom|center_horizontal">
     <TextView
         android:id="@+id/resultTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/emptyText"
-        android:textColor="@color/white"/>
-
+        android:textSize="@dimen/bigTextSize"
+        android:gravity="center" />
+    </LinearLayout>
 </LinearLayout>
