@@ -29,15 +29,17 @@ public class ChildActivity extends AppCompatActivity {
         initUIComponents();
     }
 
-    private void fullScreen() {
+    private void fullScreen() { // makes activity full screen
+
         Window window = getWindow();
         WindowManager.LayoutParams windowParams = window.getAttributes();
         final int bits = WindowManager.LayoutParams.FLAG_FULLSCREEN;
         windowParams.flags |= bits;
         window.setAttributes(windowParams);
+
     }
 
-    private void initUIComponents() {
+    private void initUIComponents() { // initializes user interface components and listeners
 
         textView = (TextView) findViewById(R.id.childActivityTextView);
         textView.setText(extraValue);
@@ -60,7 +62,7 @@ public class ChildActivity extends AppCompatActivity {
 
     }
 
-    private void onBackButtonClick(View view) {
+    private void onBackButtonClick(View view) { // function which sets result and action to intent and closes activity
 
         String text = ((Button) view).getText().toString();
         setResult(RESULT_OK, (new Intent()).setAction(text));
@@ -68,4 +70,10 @@ public class ChildActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed() { // function triggered when back button is pressed
+
+        onBackButtonClick(cancelButton);
+        
+    }
 }

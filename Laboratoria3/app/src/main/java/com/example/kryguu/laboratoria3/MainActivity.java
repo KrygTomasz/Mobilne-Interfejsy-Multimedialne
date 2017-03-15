@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    public final int REQUEST_CODE = 666;
+    public final int REQUEST_CODE = 3131;
     static final String EXTRA_KEY = "extraKey";
 
     Button firstButton;
@@ -34,15 +34,32 @@ public class MainActivity extends AppCompatActivity {
         initUIComponents();
     }
 
-    private void fullScreen() {
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (resultCode == Activity.RESULT_OK) {
+            switch (requestCode) {
+                case REQUEST_CODE:
+                    String action = data.getAction();
+                    resultTextView.setText(action);
+                    break;
+                default:
+                    super.onActivityResult(requestCode, resultCode, data);
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    private void fullScreen() { // makes activity full screen
+
         Window window = getWindow();
         WindowManager.LayoutParams windowParams = window.getAttributes();
         final int bits = WindowManager.LayoutParams.FLAG_FULLSCREEN;
         windowParams.flags |= bits;
         window.setAttributes(windowParams);
+
     }
 
-    private void initUIComponents() {
+    private void initUIComponents() { // initializes user interface components and listeners
 
         firstButton = (Button) findViewById(R.id.firstButton);
         secondButton = (Button) findViewById(R.id.secondButton);
@@ -81,25 +98,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    private void onButtonClick(View view) {
+    private void onButtonClick(View view) { // function which puts extra to intent and starts new activity
+
         Intent intent = new Intent(this, ChildActivity.class);
         String buttonText = ((Button) view).getText().toString();
         intent.putExtra(EXTRA_KEY, buttonText);
         startActivityForResult(intent, REQUEST_CODE);
+
     }
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if (resultCode == Activity.RESULT_OK) {
-            switch (requestCode) {
-                case REQUEST_CODE:
-                    String action = data.getAction();
-                    resultTextView.setText(action);
-                    break;
-                default:
-                    super.onActivityResult(requestCode, resultCode, data);
-            }
-        }
-        super.onActivityResult(requestCode, resultCode, data);
-    }
 }
