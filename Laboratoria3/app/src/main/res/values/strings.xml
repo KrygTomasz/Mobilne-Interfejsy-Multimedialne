@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Laboratoria3</string>
+    <string name="firstButton">First</string>
+    <string name="secondButton">Second</string>
+    <string name="thirdButton">Third</string>
+    <string name="fourthButton">Fourth</string>
+    <string name="emptyText">Empty Text. Click button in the second Activity to see what happen!</string>
+    <string name="acceptButton">ACCEPT</string>
+    <string name="cancelButton">CANCEL</string>
+    <string name="customTitleLeft">Custom Title</string>
+</resources>
