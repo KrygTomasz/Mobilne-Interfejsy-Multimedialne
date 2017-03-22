@@ -9,6 +9,7 @@
     <string name="hintB">b...</string>
     <string name="hintC">c...</string>
     <string name="buttonCalculate">Oblicz...</string>
+    <string name="buttonDraw">Rysuj...</string>
     <string name="textViewX0Desc">x0= </string>
     <string name="textViewX1Desc">x1= </string>
     <string name="textViewX2Desc">x2= </string>

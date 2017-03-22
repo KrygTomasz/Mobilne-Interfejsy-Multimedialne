@@ -8,6 +8,7 @@
     <string name="hintB">b...</string>
     <string name="hintC">c...</string>
     <string name="buttonCalculate">Calculate...</string>
+    <string name="buttonDraw">Draw...</string>
     <string name="textViewX0Desc">x0= </string>
     <string name="textViewX1Desc">x1= </string>
     <string name="textViewX2Desc">x2= </string>

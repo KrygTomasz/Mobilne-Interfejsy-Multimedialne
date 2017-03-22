@@ -1,5 +1,6 @@
 package com.example.kryguu.zadanie1;
 
+import android.content.Intent;
 import android.support.v4.util.Pair;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+
     TextView textViewA;
     TextView textViewB;
     TextView textViewC;
@@ -20,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     EditText editTextC;
 
     Button buttonCalculate;
+    Button buttonDraw;
 
     TextView textViewX1Desc;
     TextView textViewX2Desc;
@@ -33,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         initUIComponents();
         buttonCalculate.setOnClickListener(buttonOnClickListener);
+        buttonDraw.setOnClickListener(buttonDrawOnClickListener);
     }
 
     private void initUIComponents() { // inicjalizacja elementów widoku
@@ -45,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         textViewX1 = (TextView) findViewById(R.id.textViewX1);
         textViewX2 = (TextView) findViewById(R.id.textViewX2);
         buttonCalculate = (Button) findViewById(R.id.buttonCalculate);
+        buttonDraw = (Button) findViewById(R.id.buttonDraw);
         textViewX1Desc = (TextView) findViewById(R.id.textViewX1Desc);
         textViewX2Desc = (TextView) findViewById(R.id.textViewX2Desc);
     }
@@ -81,6 +86,64 @@ public class MainActivity extends AppCompatActivity {
             initTextViews(solutions);
         }
     };
+
+    private View.OnClickListener buttonDrawOnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Pair solutionsX = calculate();
+            Pair solutionsY = getYFor(solutionsX);
+            initTextViews(solutionsX);
+            goToDrawActivity(solutionsX, solutionsY);
+        }
+    };
+
+    private Pair getYFor(Pair solutionsX) {
+
+        Pair solutionsY;
+        float a = Float.parseFloat(editTextA.getText().toString());
+        float b = Float.parseFloat(editTextB.getText().toString());
+        float c = Float.parseFloat(editTextC.getText().toString());
+        try {
+            float x1 = Float.parseFloat(solutionsX.first.toString());
+            float x2 = Float.parseFloat(solutionsX.second.toString());
+            float y1 = a * x1 * x1 + b * x1 + c;
+            float y2 = a * x2 * x2 + b * x2 + c;
+
+            solutionsY = Pair.create(y1, y2);
+        } catch (Exception e) {
+            solutionsY = null;
+        }
+        return solutionsY;
+    }
+
+    private void goToDrawActivity(Pair solutionX, Pair solutionY) { // function which puts extra to intent and starts new activity
+
+        Intent intent = new Intent(this, DrawActivity.class);
+        String x1,x2,y1,y2;
+        String a = editTextA.getText().toString();
+        String b = editTextB.getText().toString();
+        String c = editTextC.getText().toString();
+        if (solutionX != null && solutionY != null) {
+            x1 = solutionX.first.toString();
+            x2 = solutionX.second.toString();
+            y1 = solutionY.first.toString();
+            y2 = solutionY.second.toString();
+        } else {
+            x1 = null;
+            x2 = null;
+            y1 = null;
+            y2 = null;
+        }
+        intent.putExtra(IntentExtras.EXTRA_A, a);
+        intent.putExtra(IntentExtras.EXTRA_B, b);
+        intent.putExtra(IntentExtras.EXTRA_C, c);
+        intent.putExtra(IntentExtras.EXTRA_X1, x1);
+        intent.putExtra(IntentExtras.EXTRA_X2, x2);
+        intent.putExtra(IntentExtras.EXTRA_Y1, y1);
+        intent.putExtra(IntentExtras.EXTRA_Y2, y2);
+        startActivityForResult(intent, IntentExtras.DRAW_REQUEST_CODE);
+
+    }
 
     private int numberOfSolutions(Pair solution) { // funkcja licząca ilość rozwiązań
         if (solution.first.equals(solution.second)) return 1;
