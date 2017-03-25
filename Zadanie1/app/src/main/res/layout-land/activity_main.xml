@@ -114,6 +114,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/buttonCalculate"/>
+                <Button
+                    android:id="@+id/buttonDraw"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/buttonDraw"/>
             </LinearLayout>
 
 
