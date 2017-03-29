@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+    xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item
+        android:drawable="@drawable/shape_vertical_black"
+        android:top="2px"
+        android:left="2px"
+        android:width="4px"
+        android:height="40px"
+        android:gravity="center" />
+    <item
+        android:drawable="@drawable/shape_horizontal_black"
+        android:top="2px"
+        android:left="2px"
+        android:width="40px"
+        android:height="4px"
+        android:gravity="center" />
+    <item
+        android:drawable="@drawable/shape_vertical"
+        android:width="4px"
+        android:height="40px"
+        android:gravity="center" />
+    <item
+        android:drawable="@drawable/shape_horizontal"
+        android:width="40px"
+        android:height="4px"
+        android:gravity="center" />
+</layer-list>
