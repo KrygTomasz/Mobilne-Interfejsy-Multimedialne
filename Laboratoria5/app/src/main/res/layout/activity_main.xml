@@ -1,23 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.kryguu.laboratoria5.MainActivity"
-    android:gravity="center">
+    android:gravity="center"
+    android:orientation="vertical"
+    android:weightSum="1">
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/layer_list_plus"
-        android:background="@drawable/button_bkg"
-        />
+    <EditText
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:background="@drawable/edit_text_bkg"/>
 
-    <ImageButton
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_image_plus_bkg"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <com.example.kryguu.laboratoria5.UpDownView
+        android:id="@+id/upDownView1"
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        app:btnOrientation="horizontal"
+        app:btnUp="@drawable/button_image_plus_bkg"
+        app:editText="@drawable/edit_text_bkg"
+        app:btnDown="@drawable/button_image_minus_bkg"
+        app:min="0"
+        app:max="100">
+
+    </com.example.kryguu.laboratoria5.UpDownView>
 
 
 </LinearLayout>
