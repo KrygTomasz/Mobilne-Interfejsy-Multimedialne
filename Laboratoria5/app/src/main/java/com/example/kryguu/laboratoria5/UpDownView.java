@@ -2,10 +2,12 @@ package com.example.kryguu.laboratoria5;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.os.Handler;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -22,6 +24,14 @@ public class UpDownView extends LinearLayout {
     private ImageView mUpButton;
     private EditText mEditText;
     private ImageView mDownButton;
+
+    private ButtonEvents mUpButtonEvents;
+    private ButtonEvents mDownButtonEvents;
+
+    private boolean mPressedFlag;
+    private Handler mAutoUpdateHandler;
+    private final int DELAY = 100;
+
     private int mButtonOrientation;
     private float mMin;
     private float mMax;
@@ -47,7 +57,7 @@ public class UpDownView extends LinearLayout {
             try {
                 initUIComponents(a);
                 setOnClickListeners();
-                //...
+                mAutoUpdateHandler = new Handler();
             }
             finally {
                 a.recycle();
@@ -84,7 +94,18 @@ public class UpDownView extends LinearLayout {
 
     private void setOnClickListeners() {
 
-        mEditText.addTextChangedListener(new TextWatcher() {
+        mUpButtonEvents = new ButtonEvents(mStep);
+        mDownButtonEvents = new ButtonEvents(-mStep);
+
+        mUpButton.setOnClickListener(mUpButtonEvents);
+        mUpButton.setOnLongClickListener(mUpButtonEvents);
+        mUpButton.setOnTouchListener(mUpButtonEvents);
+
+        mDownButton.setOnClickListener(mDownButtonEvents);
+        mDownButton.setOnLongClickListener(mDownButtonEvents);
+        mDownButton.setOnTouchListener(mDownButtonEvents);
+
+        mEditText.addTextChangedListener(new TextWatcher() { // mEditText listener
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
@@ -92,46 +113,36 @@ public class UpDownView extends LinearLayout {
 
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+                float currentValue;
+                try {
+                    currentValue = Float.valueOf(charSequence.toString());
+                } catch(NumberFormatException e) {
+                    currentValue = mValue;
+                }
+                if (currentValue != mValue) {
+                    checkValue(currentValue);
+                }
             }
 
             @Override
             public void afterTextChanged(Editable editable) {
-                float currentValue;
-                try {
-                    currentValue = Float.valueOf(editable.toString());
-                } catch(NumberFormatException e) {
-                    currentValue = mValue;
-                }
-                trySetValue(currentValue);
-            }
-        });
 
-        mDownButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                float currentValue = Float.valueOf(mEditText.getText().toString());
-                float tempValue = currentValue - mStep;
-                trySetValue(tempValue);
-            }
-        });
-
-        mUpButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                float currentValue = Float.valueOf(mEditText.getText().toString());
-                float tempValue = currentValue + mStep;
-                trySetValue(tempValue);
             }
         });
 
     }
 
-    private void trySetValue(float value) {
+    private void setValue(float value) { // set given value in EditText
         if (value >= mMin && value <= mMax) {
             mValue = value;
             mEditText.setText(Float.toString(mValue));
-        } else if (value > mMax) {
+        } else {
+            checkValue(value);
+        }
+    }
+
+    private void checkValue(float value) { // checks if value is between min and max
+        if (value > mMax) {
             mValue = mMax;
             mEditText.setText(Float.toString(mValue));
         } else if (value < mMin) {
@@ -141,4 +152,51 @@ public class UpDownView extends LinearLayout {
     }
 
 
-}
+
+    private class ButtonEvents implements OnClickListener, OnLongClickListener, OnTouchListener {
+
+        private float mButtonStep;
+
+        public ButtonEvents(float step) {
+            mButtonStep = step;
+        }
+
+        @Override
+        public void onClick(View view) {
+            try {
+                float currentValue = Float.valueOf(mEditText.getText().toString());
+                float tempValue = currentValue + mButtonStep;
+                setValue(tempValue);
+            } catch (NumberFormatException e) { }
+        }
+
+        @Override
+        public boolean onLongClick(View view) {
+            mPressedFlag = true;
+            try {
+                class AutoUpdater implements Runnable {
+                    public void run() {
+                        if (mPressedFlag) {
+                            mValue = Float.valueOf(mEditText.getText().toString());
+                            float tempValue = mValue + mButtonStep;
+                            setValue(tempValue);
+                            mAutoUpdateHandler.postDelayed(new AutoUpdater(),DELAY);
+                        }
+                    }
+                }
+                mAutoUpdateHandler.post(new AutoUpdater());
+            } catch (NumberFormatException e) { }
+            return false;
+        }
+
+        @Override
+        public boolean onTouch(View view, MotionEvent motionEvent) {
+            if (motionEvent.getAction() == MotionEvent.ACTION_UP || motionEvent.getAction() == MotionEvent.ACTION_CANCEL) {
+                mPressedFlag = false;
+            }
+            return false;
+        }
+    }
+
+
+    }
