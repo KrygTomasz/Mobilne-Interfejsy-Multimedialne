@@ -65,10 +65,9 @@ public class UpDownView extends LinearLayout {
     }
 
     private void initUIComponents(TypedArray a) {
-        ViewGroup layout = (ViewGroup) getChildAt(0);
-        mDownButton = (ImageButton) layout.getChildAt(0);
-        mEditText = (EditText) layout.getChildAt(1);
-        mUpButton = (ImageButton) layout.getChildAt(2);
+        mDownButton = (ImageButton) getChildAt(0);
+        mEditText = (EditText) getChildAt(1);
+        mUpButton = (ImageButton) getChildAt(2);
         mButtonOrientation = a.getInteger(
                 R.styleable.UpDownView_btnOrientation, 0);
         //...
@@ -84,9 +83,14 @@ public class UpDownView extends LinearLayout {
             mUpButton.setBackground(
                     a.getDrawable(R.styleable.UpDownView_btnUp));
         }
+        if (mButtonOrientation == 0) {
+            this.setOrientation(LinearLayout.VERTICAL);
+        } else {
+            this.setOrientation(LinearLayout.HORIZONTAL);
+        }
         mMin = a.getFloat(R.styleable.UpDownView_min, 0);
         mMax = a.getFloat(R.styleable.UpDownView_max, 100);
-        mValue = a.getFloat(R.styleable.UpDownView_value, 0);
+        mValue = a.getFloat(R.styleable.UpDownView_value, mMin);
         mStep = a.getFloat(R.styleable.UpDownView_step, 1);
 
         mEditText.setText(Float.toString(mValue));
