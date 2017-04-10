@@ -12,7 +12,6 @@
 
 
     <com.example.kryguu.laboratoria5.UpDownView
-        android:id="@+id/upDownView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:btnOrientation="vertical"
@@ -20,7 +19,7 @@
         app:editText="@drawable/edit_text_bkg"
         app:btnDown="@drawable/button_image_minus_bkg"
         app:min="0"
-        app:max="100">
+        app:max="10">
 
     </com.example.kryguu.laboratoria5.UpDownView>
 
@@ -32,16 +31,15 @@
     </View>
 
     <com.example.kryguu.laboratoria5.UpDownView
-        android:id="@+id/upDownView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:btnOrientation="horizontal"
         app:btnUp="@drawable/button_image_plus_bkg"
         app:editText="@drawable/edit_text_bkg"
         app:btnDown="@drawable/button_image_minus_bkg"
-        app:min="5"
-        app:max="10"
-        app:step="0.1">
+        app:min="11"
+        app:max="20"
+        app:step="2">
 
     </com.example.kryguu.laboratoria5.UpDownView>
 

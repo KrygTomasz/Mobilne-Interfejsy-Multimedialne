@@ -38,17 +38,17 @@ public class UpDownView extends LinearLayout {
     private float mValue;
     private float mStep;
 
-    public UpDownView(Context context, AttributeSet attrs) {
+    public UpDownView(Context context, AttributeSet attrs) { // constructor
         super(context, attrs);
         init(context, attrs);
     }
 
-    public UpDownView(Context context, AttributeSet attrs, int defStyleAttr) {
+    public UpDownView(Context context, AttributeSet attrs, int defStyleAttr) { // constructor
         super(context, attrs, defStyleAttr);
         init(context, attrs);
     }
 
-    private void init(Context context, AttributeSet attrs) {
+    private void init(Context context, AttributeSet attrs) { // layout initialization
             LayoutInflater inflater = (LayoutInflater)
                     context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             inflater.inflate(R.layout.up_down_view, this, true);
@@ -64,7 +64,7 @@ public class UpDownView extends LinearLayout {
             }
     }
 
-    private void initUIComponents(TypedArray a) {
+    private void initUIComponents(TypedArray a) { // user interface components initialization
         mDownButton = (ImageButton) getChildAt(0);
         mEditText = (EditText) getChildAt(1);
         mUpButton = (ImageButton) getChildAt(2);
@@ -90,13 +90,17 @@ public class UpDownView extends LinearLayout {
         }
         mMin = a.getFloat(R.styleable.UpDownView_min, 0);
         mMax = a.getFloat(R.styleable.UpDownView_max, 100);
+        if (mMin > mMax) {
+            mMin = 0;
+            mMax = 100;
+        }
         mValue = a.getFloat(R.styleable.UpDownView_value, mMin);
         mStep = a.getFloat(R.styleable.UpDownView_step, 1);
 
         mEditText.setText(Float.toString(mValue));
     }
 
-    private void setOnClickListeners() {
+    private void setOnClickListeners() { // sets onclick listeners for buttons and editText
 
         mUpButtonEvents = new ButtonEvents(mStep);
         mDownButtonEvents = new ButtonEvents(-mStep);
@@ -157,7 +161,7 @@ public class UpDownView extends LinearLayout {
 
 
 
-    private class ButtonEvents implements OnClickListener, OnLongClickListener, OnTouchListener {
+    private class ButtonEvents implements OnClickListener, OnLongClickListener, OnTouchListener { // class with all needed button events
 
         private float mButtonStep;
 
@@ -202,5 +206,4 @@ public class UpDownView extends LinearLayout {
         }
     }
 
-
-    }
+}
