@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">Laboratoria6</string>
+    <string-array name="cars">
+        <item>audi</item>
+        <item>honda</item>
+        <item>mazda</item>
+        <item>mercedes</item>
+        <item>mitsubishi</item>
+        <item>nissan</item>
+        <item>subaru</item>
+        <item>toyota</item>
+        <item>volkswagen</item>
+    </string-array>
+</resources>
