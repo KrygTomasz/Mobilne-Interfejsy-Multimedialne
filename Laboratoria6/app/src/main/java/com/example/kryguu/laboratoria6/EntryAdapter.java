@@ -31,8 +31,8 @@ public class EntryAdapter extends ArrayAdapter<Entry> {
         TextView textView = (TextView) convertView.findViewById(R.id.carBrandName);
         ImageView imageView = (ImageView) convertView.findViewById(R.id.carBrandImage);
         Entry entry = getItem(position);
-        textView.setText(entry.Name);
-        imageView.setImageResource(entry.Logo);
+        textView.setText(entry.getName());
+        imageView.setImageResource(entry.getLogo());
         return convertView;
     }
 }

@@ -42,6 +42,20 @@ public class MainActivity extends AppCompatActivity {
                 onButtonClick(view, ImageListActivity.class);
             }
         });
+
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onButtonClick(view, GridActivity.class);
+            }
+        });
+
+        button4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onButtonClick(view, ExpandableActivity.class);
+            }
+        });
     }
 
     private void onButtonClick(View view, Class classObject) {

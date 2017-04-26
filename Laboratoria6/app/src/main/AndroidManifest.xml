@@ -16,7 +16,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".SimpleListActivity" />
-        <activity android:name=".ImageListActivity"></activity>
+        <activity android:name=".ImageListActivity" />
+        <activity android:name=".ExpandableActivity" />
+        <activity android:name=".GridActivity"></activity>
     </application>
 
 </manifest>

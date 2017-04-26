@@ -11,4 +11,79 @@
         <item>toyota</item>
         <item>volkswagen</item>
     </string-array>
+
+    <string-array name="audi">
+        <item>A1</item>
+        <item>A2</item>
+        <item>A3</item>
+        <item>A4</item>
+        <item>A5</item>
+        <item>A6</item>
+        <item>A7</item>
+    </string-array>
+
+    <string-array name="honda">
+        <item>Civic</item>
+        <item>Accord</item>
+        <item>Beat</item>
+        <item>N-One</item>
+        <item>Insight</item>
+    </string-array>
+
+    <string-array name="mazda">
+        <item>Bongo</item>
+        <item>Biante</item>
+        <item>BT-50</item>
+        <item>Titan</item>
+        <item>Scrum</item>
+    </string-array>
+
+    <string-array name="mercedes">
+        <item>Actros</item>
+        <item>Antos</item>
+        <item>Arocs</item>
+        <item>Axor</item>
+        <item>Unimog</item>
+    </string-array>
+
+    <string-array name="mitsubishi">
+        <item>Adventure</item>
+        <item>Challenger</item>
+        <item>Fuzion</item>
+        <item>Jolie</item>
+        <item>Pajero</item>
+    </string-array>
+
+    <string-array name="nissan">
+        <item>Micra</item>
+        <item>Qashqai</item>
+        <item>Primera</item>
+        <item>Juke</item>
+        <item>Note</item>
+    </string-array>
+
+    <string-array name="subaru">
+        <item>Impreza</item>
+        <item>Forester</item>
+        <item>Outback</item>
+        <item>B9 Tribeca</item>
+        <item>Legacy</item>
+    </string-array>
+
+    <string-array name="toyota">
+        <item>Corolla</item>
+        <item>Avensis</item>
+        <item>Aygo</item>
+        <item>Verso</item>
+        <item>Prius</item>
+    </string-array>
+
+    <string-array name="volkswagen">
+        <item>Amarok</item>
+        <item>Ameo</item>
+        <item>Golf</item>
+        <item>Passat</item>
+        <item>Voyage</item>
+    </string-array>
+
 </resources>

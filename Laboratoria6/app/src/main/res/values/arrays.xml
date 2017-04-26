@@ -11,4 +11,17 @@
         <item>@drawable/toyota</item>
         <item>@drawable/volkswagen</item>
     </array>
+
+    <array name="cars_model">
+        <item>@array/audi</item>
+        <item>@array/honda</item>
+        <item>@array/mazda</item>
+        <item>@array/mercedes</item>
+        <item>@array/mitsubishi</item>
+        <item>@array/nissan</item>
+        <item>@array/subaru</item>
+        <item>@array/toyota</item>
+        <item>@array/volkswagen</item>
+    </array>
+
 </resources>
