@@ -32,11 +32,11 @@ public class GridActivity extends AppCompatActivity {
         setOnListItemClick();
     }
 
-    private void initUIComponents() {
+    private void initUIComponents() { // inits user interface components
         mGridView = (GridView) findViewById(R.id.grid_view);
     }
 
-    private void initArrays() {
+    private void initArrays() { // inits all arrays from resources
         mCarNames = getResources().getStringArray(R.array.cars);
         mCarImages = getResources().obtainTypedArray(R.array.cars_references);
         entries = new ArrayList<>();
@@ -46,16 +46,16 @@ public class GridActivity extends AppCompatActivity {
         }
     }
 
-    private void initAdapter() {
+    private void initAdapter() { // inits adapter
         EntryAdapter adapter = new EntryAdapter(this, R.layout.grid_item, entries);
         mGridView.setAdapter(adapter);
     }
 
-private void setOnListItemClick() {
-    mGridView.setOnItemClickListener(getItemClickListener());
-}
+    private void setOnListItemClick() { // sets onClick for list item
+        mGridView.setOnItemClickListener(getItemClickListener());
+    }
 
-    private AdapterView.OnItemClickListener getItemClickListener() {
+    private AdapterView.OnItemClickListener getItemClickListener() { // gets onClick for list item
         AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

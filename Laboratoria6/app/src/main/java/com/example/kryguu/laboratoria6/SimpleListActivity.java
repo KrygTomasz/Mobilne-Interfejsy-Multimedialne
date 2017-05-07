@@ -25,22 +25,22 @@ public class SimpleListActivity extends AppCompatActivity {
         setOnListItemClick();
     }
 
-    private void initUIComponents() {
+    private void initUIComponents() { // inits user interface components
         listView = (ListView) findViewById(R.id.listView);
         initArray();
         mAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, mCarNames);
         listView.setAdapter(mAdapter);
     }
 
-    private void initArray() {
+    private void initArray() { // inits all arrays from resources
         mCarNames = getResources().getStringArray(R.array.cars);
     }
 
-    private void setOnListItemClick() {
+    private void setOnListItemClick() { // sets onClick for list item
         listView.setOnItemClickListener(getItemClickListener());
     }
 
-    private AdapterView.OnItemClickListener getItemClickListener() {
+    private AdapterView.OnItemClickListener getItemClickListener() { // gets onClick for list item
         AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

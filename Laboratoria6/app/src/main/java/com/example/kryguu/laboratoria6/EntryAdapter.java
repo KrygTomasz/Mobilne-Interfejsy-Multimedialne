@@ -24,7 +24,7 @@ public class EntryAdapter extends ArrayAdapter<Entry> {
         mInflater = LayoutInflater.from(context);
     }
 
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, ViewGroup parent) { // returns adapter's view
         if (convertView == null) {
             convertView = mInflater.inflate(mLayoutId, parent, false);
         }

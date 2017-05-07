@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">Laboratoria6</string>
+    <string name="button1Text">Simple</string>
+    <string name="button2Text">Image</string>
+    <string name="button3Text">Grid</string>
+    <string name="button4Text">Expand</string>
     <string-array name="cars">
         <item>audi</item>
         <item>honda</item>

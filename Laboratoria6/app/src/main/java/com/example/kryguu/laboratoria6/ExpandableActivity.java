@@ -30,11 +30,11 @@ public class ExpandableActivity extends AppCompatActivity {
         setOnListItemClick();
     }
 
-    private void initUIComponents() {
+    private void initUIComponents() { // inits user interface components
         expListView = (ExpandableListView) findViewById(R.id.expandableListView);
     }
 
-    private void initArrays() {
+    private void initArrays() { // inits all arrays from resources
         mCarNames = getResources().getStringArray(R.array.cars);
         mCarImages = getResources().obtainTypedArray(R.array.cars_references);
         mCarModels = getResources().obtainTypedArray(R.array.cars_model);
@@ -46,18 +46,17 @@ public class ExpandableActivity extends AppCompatActivity {
         }
     }
 
-    private void initAdapter() {
-        //EntryAdapter adapter = new EntryAdapter(this, R.layout.list_item, entries);
+    private void initAdapter() { // inits adapter
         ExpandableAdapter adapter = new ExpandableAdapter(this,entries);
         expListView.setAdapter(adapter);
     }
 
-    private void setOnListItemClick() {
+    private void setOnListItemClick() { // sets listeners for item click
         expListView.setOnGroupClickListener(getOnGroupClickListener());
         expListView.setOnChildClickListener(getOnChildClickListener());
     }
 
-    private ExpandableListView.OnGroupClickListener getOnGroupClickListener() {
+    private ExpandableListView.OnGroupClickListener getOnGroupClickListener() { // returns click listener for section
         return new ExpandableListView.OnGroupClickListener() {
             @Override
             public boolean onGroupClick(ExpandableListView expandableListView, View view, int i, long l) {
@@ -69,7 +68,7 @@ public class ExpandableActivity extends AppCompatActivity {
         };
     }
 
-    private ExpandableListView.OnChildClickListener getOnChildClickListener() {
+    private ExpandableListView.OnChildClickListener getOnChildClickListener() { // returns click listener for item
         return new ExpandableListView.OnChildClickListener() {
             @Override
             public boolean onChildClick(ExpandableListView expandableListView, View view, int i, int i1, long l) {
