@@ -40,10 +40,10 @@ public class MainActivity extends AppCompatActivity {
         listView.setAdapter(mAdapter);
     }
 
-    private void initSensorManager() { // inits all arrays from resources
+    private void initSensorManager() { // inits sensors data
         mSensorManager = (SensorManager) getSystemService(Context.SENSOR_SERVICE);
         mSensors = mSensorManager.getSensorList(Sensor.TYPE_ALL);
-        mSensorNames = new ArrayList<String>();
+        mSensorNames = new ArrayList<>();
         for (Sensor sensor: mSensors) {
             mSensorNames.add(sensor.getName());
         }
