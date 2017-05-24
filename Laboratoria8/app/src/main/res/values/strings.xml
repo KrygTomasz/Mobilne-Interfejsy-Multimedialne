@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Laboratoria8</string>
+    <string-array name="interactions">
+        <item>Touch</item>
+        <item>Gesture</item>
+        <item>Painter</item>
+    </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

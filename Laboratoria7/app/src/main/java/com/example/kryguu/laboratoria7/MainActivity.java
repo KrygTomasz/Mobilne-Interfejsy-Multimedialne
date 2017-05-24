@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private AdapterView.OnItemClickListener getItemClickListener() { // gets onClick for list item
-        AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
+        AdapterView.OnItemClickListener listener =new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 String sensorName = adapterView.getItemAtPosition(i).toString();
