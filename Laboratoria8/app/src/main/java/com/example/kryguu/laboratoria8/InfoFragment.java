@@ -27,13 +27,11 @@ public class InfoFragment extends Fragment {
     }
 
 
-    public void SetHeader(String header)
-    {
+    public void SetHeader(String header) { // sets header text
         mHeader.setText(header);
     }
 
-    public void SetInfo(String info)
-    {
+    public void SetInfo(String info) { // sets information text
         mInfo.setText(info);
     }
 

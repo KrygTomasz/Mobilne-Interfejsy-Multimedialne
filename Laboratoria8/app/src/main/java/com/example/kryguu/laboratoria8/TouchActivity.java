@@ -14,18 +14,6 @@ public class TouchActivity extends AppCompatActivity {
     private TextView mUpTV;
     private TextView mPressureTV;
 
-    private TextView mPointerDown1TV;
-    private TextView mPointerDown2TV;
-    private TextView mPointerDown3TV;
-    private TextView mPointerDown4TV;
-    private TextView mPointerDown5TV;
-
-    private TextView mPointerUp1TV;
-    private TextView mPointerUp2TV;
-    private TextView mPointerUp3TV;
-    private TextView mPointerUp4TV;
-    private TextView mPointerUp5TV;
-
     private TextView[] mPointerDownTVs = new TextView[5];
     private TextView[] mPointerUpTVs = new TextView[5];
 
@@ -63,39 +51,60 @@ public class TouchActivity extends AppCompatActivity {
 
         switch (event.getActionMasked()) {
             case MotionEvent.ACTION_DOWN:
-                mCountTV.setText(String.format("Count: %d",event.getPointerCount()));
-                mPressureTV.setText(String.format("Pressure: %.2f",event.getPressure()));
-                mDownTV.setText(String.format("(x,y): %.2f, %.2f",event.getX(),event.getY()));
-                // obsługa Count, Pressure, Down (pointerIndex, pointerID, x, y)
+                setCount(event.getPointerCount());
+                setPressure(event.getPressure());
+                setDown(event.getX(), event.getY());
                 break;
             case MotionEvent.ACTION_UP:
-                mCountTV.setText(String.format("Count: %d",event.getPointerCount()));
-                mPressureTV.setText(String.format("Pressure: %.2f",event.getPressure()));
-                mUpTV.setText(String.format("(x,y): %.2f, %.2f",event.getX(),event.getY()));
-                // obsługa Count, Pressure, Up (pointerIndex, pointerID, x, y)
+                setCount(event.getPointerCount());
+                setPressure(event.getPressure());
+                setUp(event.getX(), event.getY());
                 break;
             case MotionEvent.ACTION_MOVE:
-                mCountTV.setText(String.format("Count: %d",event.getPointerCount()));
-                mPressureTV.setText(String.format("Pressure: %.2f",event.getPressure()));
-                mMoveTV.setText(String.format("(x,y): %.2f, %.2f",event.getX(),event.getY()));
-                // obsługa Count, Pressure, Move (pointerIndex, pointerID, x, y)
+                setCount(event.getPointerCount());
+                setPressure(event.getPressure());
+                setMove(event.getX(), event.getY());
                 break;
             case MotionEvent.ACTION_POINTER_DOWN:
-                mPointerDown1TV.setText(String.format("Count: %.2f",event.getX(0)));
-                mPointerDown2TV.setText(String.format("Count: %.2f",event.getX(1)));
-                mPointerDown3TV.setText(String.format("Count: %.2f",event.getX(2)));
-                mPointerDown4TV.setText(String.format("Count: %.2f",event.getX(3)));
-                mPointerDown5TV.setText(String.format("Count: %.2f",event.getX(4)));
-
-                // obsługa Count, Pressure, PointerDown (pointerIndex, pointerID, x, y)
-                // w zależności od pointerIndex
+                setPointerDown(pointerID, event.getX(), event.getY());
                 break;
             case MotionEvent.ACTION_POINTER_UP:
-                // obsługa Count, Pressure, PointerUp (pointerIndex, pointerID, x, y)
-                // w zależności od pointerIndex
+                setPointerUp(pointerID, event.getX(), event.getY());
                 break;
         }
         return super.onTouchEvent(event);
+    }
+
+    private void setDown(float x, float y) { // sets touch down text field
+        mDownTV.setText(String.format("(x,y): %.2f, %.2f", x, y));
+    }
+
+    private void setUp(float x, float y) { // sets touch up text field
+        mUpTV.setText(String.format("(x,y): %.2f, %.2f", x, y));
+    }
+
+    private void setMove(float x, float y) { // sets touch move text field
+        mMoveTV.setText(String.format("(x,y): %.2f, %.2f", x, y));
+    }
+
+    private void setPressure(float pressure) { // sets touch pressure text field
+        mPressureTV.setText(String.format("Pressure: %.2f", pressure));
+    }
+
+    private void setCount(int count) { // sets touch count text field
+        mCountTV.setText(String.format("Count: %d", count));
+    }
+
+    private void setPointerUp(int pointerID, float x, float y) { // sets pointer up text field depends on finger id
+        if (pointerID < 5) {
+            mPointerUpTVs[pointerID].setText(String.format("(x,y): %.2f, %.2f", x, y));
+        }
+    }
+
+    private void setPointerDown(int pointerID, float x, float y) { // sets pointer down text field depends on finger id
+        if (pointerID < 5) {
+            mPointerDownTVs[pointerID].setText(String.format("(x,y): %.2f, %.2f", x, y));
+        }
     }
 
 }

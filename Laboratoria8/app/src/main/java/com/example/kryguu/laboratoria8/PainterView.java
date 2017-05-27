@@ -3,10 +3,13 @@ package com.example.kryguu.laboratoria8;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Paint;
+import android.graphics.Point;
+import android.graphics.PointF;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
 import android.view.View;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -15,10 +18,9 @@ import java.util.List;
 
 public class PainterView extends View {
 
-    final int RADIUS = 2;
+    final int RADIUS = 10;
     private Paint mPaint;
-    private List<Float> mXs;
-    private List<Float> mYs;
+    private ArrayList<PointF> mPoints;
 
     public PainterView(Context context) {
         super(context);
@@ -40,20 +42,32 @@ public class PainterView extends View {
         initPaint();
     }
 
-    private void initPaint() {
+    private void initPaint() { // inits paint's colors, strokes, etc.
         mPaint = new Paint();
+        mPaint.setAntiAlias(true);
         mPaint.setColor(android.graphics.Color.BLACK);
-        mPaint.setStrokeWidth(2);
-        mPaint.setStyle(Paint.Style.STROKE);
+        mPaint.setStrokeWidth(RADIUS);
+        mPaint.setStyle(Paint.Style.FILL);
+    }
+
+    public void setPoints(ArrayList<PointF> points) { // sets points to draw
+        mPoints = points;
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        drawDot(canvas, 100, 100);
+        for (PointF point : mPoints) {
+            drawDot(canvas, point);
+        }
     }
 
-    private void drawDot(Canvas canvas, float x, float y) {
-        canvas.drawCircle(x, y, RADIUS, mPaint);
+    private void drawDot(Canvas canvas, PointF point) { // draws dot on specified position
+        canvas.drawCircle(point.x, point.y, RADIUS, mPaint);
+    }
+
+    public void clear() { // clears view
+        mPoints.clear();
+        invalidate();
     }
 }

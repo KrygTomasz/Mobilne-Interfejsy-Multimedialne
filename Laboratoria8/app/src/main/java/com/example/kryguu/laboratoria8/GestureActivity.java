@@ -20,7 +20,7 @@ public class GestureActivity extends AppCompatActivity {
 
     private GestureDetector mGestureDetector;
 
-    private class SimpleGestureListener extends GestureDetector.SimpleOnGestureListener {
+    private class SimpleGestureListener extends GestureDetector.SimpleOnGestureListener { // class to recognize tap events
 
         @Override
         public boolean onDoubleTap(MotionEvent e) {
@@ -84,7 +84,7 @@ public class GestureActivity extends AppCompatActivity {
         initUIComponents();
     }
 
-    private void initUIComponents() {
+    private void initUIComponents() { // inits user interface components
         mDoubleTapF = (InfoFragment) getSupportFragmentManager().findFragmentById(R.id.doubleTapF);
         mDoubleTapF.SetHeader("Double Tap");
         mDoubleTapEventF = (InfoFragment) getSupportFragmentManager().findFragmentById(R.id.doubleTapEventF);
@@ -108,7 +108,7 @@ public class GestureActivity extends AppCompatActivity {
         findViewById(android.R.id.content).setOnTouchListener(new TouchListener());
     }
 
-    private class TouchListener implements View.OnTouchListener {
+    private class TouchListener implements View.OnTouchListener { // class to recognize touch
         @Override
         public boolean onTouch(View v, MotionEvent event)
         {

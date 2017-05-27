@@ -27,11 +27,11 @@ public class MainActivity extends AppCompatActivity {
         setOnListItemClick();
     }
 
-    private void setOnListItemClick() {
+    private void setOnListItemClick() { // sets list item click
         mListView.setOnItemClickListener(getItemClickListener());
     }
 
-    private AdapterView.OnItemClickListener getItemClickListener() {
+    private AdapterView.OnItemClickListener getItemClickListener() { // returns listener for list item click
         AdapterView.OnItemClickListener listener = new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -48,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
                     case 2:
                         intent = new Intent(MainActivity.this, PainterActivity.class);
                         startActivity(intent);
+                        break;
+                    default:
                         break;
                 }
             }
