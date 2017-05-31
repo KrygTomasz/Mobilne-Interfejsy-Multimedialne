@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Laboratoria9</string>
+    <string-array name="devices">
+        <item name="vibrator">Vibrator</item>
+        <item name="camera">Camera</item>
+    </string-array>
+    <string name="SOS">S.O.S.</string>
+</resources>
