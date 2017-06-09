@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/noncheckable_group" android:checkableBehavior="none">
+        <item android:title="Fragment 1">
+            <menu>
+                <item android:id="@+id/noncheckable_item_1"
+                    android:title="@string/fragment1a" />
+                <item android:id="@+id/noncheckable_item_2"
+                    android:title="@string/fragment1b" />
+                <item android:id="@+id/noncheckable_item_3"
+                    android:title="@string/fragment1c" />
+                <item android:id="@+id/noncheckable_item_4"
+                    android:title="@string/fragment1d" />
+            </menu>
+        </item>
+    </group>
+</menu>

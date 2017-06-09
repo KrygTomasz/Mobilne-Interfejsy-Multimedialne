@@ -1,0 +1,65 @@
+<resources>
+    <string name="app_name">Laboratoria10</string>
+    <string name="all">Wszystkie</string>
+    <string name="none">Żaden</string>
+    <string name="single">Jeden</string>
+    <string name="nogroup">Bez grupy</string>
+    <string name="empty_info">Informacja</string>
+    <string name="info">%1$s (widoczny: %2$s, wybrany: %3$s)</string>
+    <string name="clear">Usuń informację</string>
+    <string name="answer_yes">Odpowiedź brzmi: tak</string>
+    <string name="answer_no">Odpowiedź brzmi: nie</string>
+    <string name="canceled">Wybór anulowano</string>
+    <string name="chosen">Wybrano:\n</string>
+    <string name="chosen_item">Pozycja %1$d: %2$s</string>
+
+    <string name="item1">Element 1</string>
+    <string name="item2">Element 2</string>
+    <string name="item3">Element 3</string>
+    <string name="item4">Element 4</string>
+    <string name="fragment1a">Fragment 1a</string>
+    <string name="fragment1b">Fragment 1b</string>
+    <string name="fragment1c">Fragment 1c</string>
+    <string name="fragment1d">Fragment 1d</string>
+    <string name="fragment2a">Fragment 2a</string>
+    <string name="fragment2b">Fragment 2b</string>
+    <string name="fragment2c">Fragment 2c</string>
+    <string name="fragment2d">Fragment 2d</string>
+
+    <string name="dialog1">Uwaga</string>
+    <string name="dialog2">Wybierz jeden</string>
+    <string name="dialog3">Wybierz kilka</string>
+
+    <string name="question">Czy to ostatnie ćwiczenie?</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">Anuluj</string>
+    <string name="yes">Tak</string>
+    <string name="no">Nie</string>
+
+    <string-array name="list">
+        <item>@string/none</item>
+        <item>@string/all</item>
+        <item>@string/single</item>
+    </string-array>
+
+    <string-array name="fragment1">
+        <item>@string/fragment1a</item>
+        <item>@string/fragment1b</item>
+        <item>@string/fragment1c</item>
+        <item>@string/fragment1d</item>
+    </string-array>
+
+    <string-array name="fragment2">
+        <item>@string/fragment2a</item>
+        <item>@string/fragment2b</item>
+        <item>@string/fragment2c</item>
+        <item>@string/fragment2d</item>
+    </string-array>
+
+    <string-array name="items">
+        <item>@string/item1</item>
+        <item>@string/item2</item>
+        <item>@string/item3</item>
+        <item>@string/item4</item>
+    </string-array>
+</resources>
