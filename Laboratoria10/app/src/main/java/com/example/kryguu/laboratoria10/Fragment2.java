@@ -15,7 +15,7 @@ import android.widget.TextView;
 public class Fragment2 extends Fragment {
 
     private TextView mInfoText;
-    
+
     public Fragment2() {}
 
     @Override
@@ -37,7 +37,7 @@ public class Fragment2 extends Fragment {
         inflater.inflate(R.menu.fragment2_menu, menu);
         super.onCreateOptionsMenu(menu, inflater);
     }
-    
+
     // odkomentować poniższy fragment w celu obsługi menu kontekstowego
 
     @Override
